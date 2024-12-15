@@ -10,7 +10,7 @@ const messageTwo = document.querySelector('#message-2')
 const select = document.querySelector('#unit')
 
 
-
+// Regex for alphanumeric characters to show when user enters special characters.
 weatherForm.addEventListener('submit', (e) =>{
     e.preventDefault()
     let regex = /^[a-zA-Z0-9, ]*$/;
@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) =>{
 messageOne.textContent ='Loading ...'
 messageTwo.textContent = ''
 
-
+//  fetching the user option tag for their chosen units. 
     fetch('/weather?address=' + location + '&units=' + select.options[select.selectedIndex].value).then((response) => {
         response.json().then((data) => {
             if(!regex.test(location)) {
