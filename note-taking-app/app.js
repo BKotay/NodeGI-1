@@ -82,14 +82,14 @@ yargs.command({
           demandOption: true,
           type: 'string'
         },
-        text: {
+        body: {
             describe: 'This is where the notes will be edited',
             demandOption: true,
             type: 'string'
         }
     },
-    handler: function() {
-        notes.editNotes('edit all the notes!')
+    handler: function(argv) {
+        notes.editNote(argv.title, argv.body)
     }
     
 })

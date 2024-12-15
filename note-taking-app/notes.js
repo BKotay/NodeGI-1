@@ -70,6 +70,12 @@ const readNote = (title) => {
 }
 
 // ---- Edit Function ---- //
+const editNote = (title, body) => {
+const notes = loadNotes()
+let found = notes.find((note) => note.title === title)
+found.body = body
+saveNotes(notes)
+}
 
 // how to turn files into strings than objects
 const loadNotes = function () {

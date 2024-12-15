@@ -8,10 +8,10 @@
 
 // //MAKE HTTP REQUEST
 
-const geocode = require("./utils/geocode");
-const forecast = require("./utils/forecast");
-
-// const url = 'https://api.weatherstack.com/current?access_key=d4777fe476fbcd008d967d7f846f4a48&query=37.8267,-122.4233&units=f'
+const request = require('request')
+const geocode = require("./web-server/src/utils/geocode");
+const forecast = require("./web-server/src/utils/forecast");
+const url = 'https://api.weatherstack.com/current?access_key=d4777fe476fbcd008d967d7f846f4a48&query=37.8267,-122.4233&units=f'
 
 // //Accessing response.body gives me an access to the body of the API.
 
@@ -30,18 +30,19 @@ const forecast = require("./utils/forecast");
 
 // const geocodeURL = 'https://api.mapbox.com/search/geocode/v6/forward?q=Los%20Angeles&access_token=pk.eyJ1IjoiYmxhbWFoazEiLCJhIjoiY200bmVsZ2ZrMDdmczJqcTB1Ym5jemJncCJ9.UnFwEGTZcSU5xcyivZL2AQ&limit=1'
 
-let adress = process.argv[2];
+let address = process.argv[2];
 
-if (!adress) {
-  console.log("please provide an adress");
+if (!address) {
+  console.log("You need to provide a address");
 } else {
-  geocode(adress, (error, data) => {
+  geocode(address, (error, data) => {
     if (error) {
       return console.log(error);
     }
 
-    console.log("erroer", error);
-    console.log("daat", data);
+    console.log("error", error);
+    console.log("data", data);
+
     forecast(data.lat, data.long, (error, forecastData) => {
       if (error) {
         return console.log(error);
