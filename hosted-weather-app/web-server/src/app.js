@@ -20,7 +20,7 @@ app.use(express.static(publicDirectoryPath));
 
 app.get("", (req, res) => {
   res.render("index", {
-    title: "Weather App",
+    title: "BK Weather App",
     name: "BK",
   });
 });
@@ -34,7 +34,7 @@ app.get("/about", (req, res) => {
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    helpText: "This is some helpful text. Thank you BK!",
+    helpText: "If you need further help contact us!",
     title: "Help",
     name: "BK",
   });
@@ -46,26 +46,29 @@ app.get("/weather", (req, res) => {
       error: "You must provide an address.",
     });
   }
-const{_, units} = req.query
+  const { _, units } = req.query;
 
   geocode(req.query.address, (error, { latitude, longitude, location }) => {
     if (error) {
       return res.send({ error });
     }
 
-    forecast(latitude, longitude, (error, forecastData) => {
-      if (error) {
-        return res.send({ error });
-      }
+    forecast(
+      latitude,
+      longitude,
+      (error, forecastData) => {
+        if (error) {
+          return res.send({ error });
+        }
 
-      res.send({
-        forecast: forecastData,
-        location,
-        address: req.query.address,
-      });
-    },
-  units);
-
+        res.send({
+          forecast: forecastData,
+          location,
+          address: req.query.address,
+        });
+      },
+      units
+    );
   });
 
   //   res.send({
@@ -104,6 +107,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(3003, () => {
   console.log("Server is up on port 3000.");
 });

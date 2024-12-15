@@ -20,7 +20,7 @@ messageOne.textContent ='Loading ...'
 messageTwo.textContent = ''
 
 
-    fetch('http://localhost:3000/weather?address=' + location + '&units=' + select.options[select.selectedIndex].value).then((response) => {
+    fetch('/weather?address=' + location + '&units=' + select.options[select.selectedIndex].value).then((response) => {
         response.json().then((data) => {
             if(!regex.test(location)) {
                 messageOne.textContent = 'Please enter your a valid location.'
