@@ -1,0 +1,15 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node hosted-weather-app/web-server/src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "postman-request": "^2.88.1-postman.40"
+  }
+}
